@@ -5,7 +5,7 @@ public class ShapeFactory {
 	public static Shape getShape(String shapeType) {
 		
 		if(shapeType == null) {
-			return null;
+			throw new RuntimeException("Invalid shapeType");
 		}
 		
 		if("CIRCLE".equalsIgnoreCase(shapeType)) {
@@ -18,6 +18,10 @@ public class ShapeFactory {
 			return new Square();
 		}
 		return null;
+	}
+	
+	public static Shape getShapeFromEnum(ShapeTypeEnum shapeType) {
+		return shapeType.getInstance();
 	}
 
 }
